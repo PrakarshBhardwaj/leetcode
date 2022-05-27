@@ -1,12 +1,13 @@
+const int N = 1e6 + 1;
+static vector<int> V(N, -1);
+
 class Solution {
 public:
     int numberOfSteps(int num) {
-        int cnt = 0;
-        while(num) {
-            if(num % 2 == 0) num /= 2;
-            else num -= 1;
-            cnt++;
-        }
-        return cnt;
+        if(num == 0) return 0;
+        if(V[num] != -1) return V[num];
+        
+        if(num&1) return V[num] = numberOfSteps(num - 1) + 1;
+        return V[num] = numberOfSteps(num/2) + 1;
     }
 };
