@@ -1,13 +1,16 @@
-const int N = 1e6 + 1;
-static vector<int> V(N, -1);
+
 
 class Solution {
 public:
     int numberOfSteps(int num) {
-        if(num == 0) return 0;
-        if(V[num] != -1) return V[num];
-        
-        if(num&1) return V[num] = numberOfSteps(num - 1) + 1;
-        return V[num] = numberOfSteps(num/2) + 1;
+        ios_base::sync_with_stdio(0);
+        cin.tie(0), cout.tie(0);
+        int cnt = 0;
+        while(num) {
+            if(num & 1) num -= 1;
+            else num /= 2;
+            cnt++;
+        }
+        return cnt;
     }
 };
