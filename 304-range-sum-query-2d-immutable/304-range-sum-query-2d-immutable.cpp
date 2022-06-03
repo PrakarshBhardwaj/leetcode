@@ -21,13 +21,6 @@ public:
                 pref[i][j] = pref[i - 1][j] + pref[i][j - 1] - pref[i - 1][j - 1] + matrix[i][j];
             }
         }
-        
-        // for(auto i : pref){
-        //     for(auto j : i){
-        //         cout << j << " ";
-        //     }
-        //     cout << endl;
-        // }
     }
     
     int sumRegion(int row1, int col1, int row2, int col2) {
@@ -37,8 +30,6 @@ public:
         if(row1 - 1 >= 0 && col1 - 1 >= 0) to_sub -= pref[row1 - 1][col1 - 1];
         if(row1 - 1 >= 0) to_sub += pref[row1 - 1][col2];
         if(col1 - 1 >= 0) to_sub += pref[row2][col1 - 1];
-        
-        // cout << tot << " " << to_sub;
         
         return tot - to_sub;
     }
