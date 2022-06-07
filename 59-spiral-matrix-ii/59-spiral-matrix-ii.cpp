@@ -1,43 +1,38 @@
 class Solution {
 public:
     vector<vector<int>> generateMatrix(int n) {
-        vector<vector<int>> ans(n, vector<int>(n));
-        vector<vector<bool>> flg(n, vector<bool>(n, false));
-        
+        vector<vector<int>> ans(n, vector<int>(n, 0));
+    
         int ln = n/2 + (n&1);
         int t = 1;
         
         for(int i = 0; i < ln; i++){
             
             for(int j = i; j < n - i; j++){
-                if(!flg[i][j]){
+                if(ans[i][j] == 0){
                     ans[i][j] = t;
                     t++;
-                    flg[i][j] = true;
                 }
             }
             
             for(int j = i; j < n - i; j++){
-                if(!flg[j][n - 1 - i]){
+                if(ans[j][n - 1 - i] == 0){
                     ans[j][n - 1 - i] = t;
                     t++;
-                    flg[j][n - 1 - i] = true;
                 }
             }
             
             for(int j = n - i - 1; j >= i; j--){
-                if(!flg[n - 1 - i][j]){
+                if(ans[n - 1 - i][j] == 0){
                     ans[n - 1 - i][j] = t;
                     t++;
-                    flg[n - 1 - i][j] = true;
                 }
             }
             
             for(int j = n - 1 - i; j >= i; j--){
-                if(!flg[j][i]){
+                if(ans[j][i] == 0){
                     ans[j][i] = t;
                     t++;
-                    flg[j][i] = true;
                 }
             }
         }
