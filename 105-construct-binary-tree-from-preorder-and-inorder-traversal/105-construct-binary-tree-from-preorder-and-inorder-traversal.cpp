@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    unordered_map<int, int> mp;
+    map<int, int> mp;
     
     TreeNode *go(vector<int> &pre, vector<int> &in, int strt, int end){
         if(strt > end) return NULL;
