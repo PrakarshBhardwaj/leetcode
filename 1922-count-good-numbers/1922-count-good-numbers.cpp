@@ -1,23 +1,18 @@
 class Solution {
 public:
     const int M = 1e9 + 7;
+    unordered_map<int, unordered_map<bool, int>> dp;
     
-    long long go(int a, long long b){
-        long long ans = 1;
+    int go(long long n, bool flg){
+        if(n == 1) return (flg ? 4 : 5);
+        if(dp.find(n) != dp.end() && dp[n].find(flg) != dp[n].end()) return dp[n][flg];
         
-        while(b){
-            if(b&1) ans = (ans * a) % M;
-            a = ((long long)a * a) % M;
-            b >>= 1;
-        }
-        
-        return ans;
+        int tmp = ((long long)go(n/2, !flg) * go(n/2, flg)) % M;
+        if(n&1) tmp = ((long long)tmp * (flg ? 4 : 5)) % M;
+        return dp[n][flg] = tmp;
     }
     
     int countGoodNumbers(long long n) {
-        long long ev = n/2 + (n&1);
-        long long odd = n/2;
-        
-        return ( go(4, odd) * go(5, ev) ) % M;
+        return go(n, false);
     }
 };
