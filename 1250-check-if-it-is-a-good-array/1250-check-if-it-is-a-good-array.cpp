@@ -6,6 +6,7 @@ public:
     }
     
     bool isGoodArray(vector<int>& nums) {
+        // Linear Diophantine
         int n = nums.size();
         int tmp = 0;
         for(int i = 0; i < n; i++) tmp = gcd(tmp, nums[i]);
