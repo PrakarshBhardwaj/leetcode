@@ -1,3 +1,9 @@
+/* tips for identifying when a problem may require union find
+1. Linear TC required
+2. grouping of objects required
+3. find group of a object required
+*/
+
 class Solution {
 public:
     int find(unordered_map<int, int> &mp, int curr){
